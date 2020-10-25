@@ -494,7 +494,7 @@ on Host.
 
 .. save and exit.
 
-You can now run the Ganache starter you would have downloaded earlier.
+You can now run the Ganache starter you would have downloaded earlier. Create a project and link it to your truffle-config.js.
 
 Then on Host in truffle-project directory:
 
