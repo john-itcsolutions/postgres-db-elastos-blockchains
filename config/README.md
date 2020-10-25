@@ -126,7 +126,7 @@ FROM HOST TERMINAL: clone the repo:
 
 `git clone https://github.com/john-itcsolutions/postgres-db-elastos-blockchains.git`
 
-# As this is forked from Arianitu's github site, the head README.md file applies to building the database only. The README.md for postgres-db-elastos-blockchains had to be placed inside the config folder.
+# As this is forked from Arianit.U's github site, the head README.md file applies to building the database only. The README.md for postgres-db-elastos-blockchains had to be placed inside the config folder.
 
 Then:
 
