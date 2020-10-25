@@ -270,7 +270,7 @@ Create places for persistent volumes on database-node and allow access:
 
 _________________________________________________
 
-Still in database-node, start master postgres server:
+Still in database-node, in "shared" directory and inside "postgres-db-elastos-blockchains" folder, start master postgres server:
 
 `microk8s kubectl apply -f statefulset-master.yml`
 
@@ -289,6 +289,20 @@ If errors or excessive delay get messages with:
 `microk8s kubectl apply -f statefulset-replica.yml`
  
  Check pods in master node. If all is well:
+ 
+ Ensure you are on database-node in the "postgres-db-elastos-blockchains" directory which you access via the shared folder, and
+ 
+ `sudo ./copyredisconf.sh`
+ 
+ which copies redis.conf (unedited as yet) to the 3 config directories.
+ 
+ You then need to edit each file in place (ie in /mnt/disk/config-a-horse, for example) and insert the name of the data backup folder which the dump.rdb file will be placed in.
+ 
+ For redis-a-horse it is data-a-horse
+ 
+ For redis-cheirrs it is data-cheirrs
+ 
+ For redis-cheirrs-oseer it is data-cheirrs-oseer
  
  Database-node:
 
@@ -320,11 +334,11 @@ check pods ..
 
 # The following 3 commands would be possible only after you are positively identified, gain our trust, and sign an agreement to work with us, in order to obtain these backup files. Or, develop your own!
 
-`microk8s kubectl cp ../cheirrs_backup.sql postgres-0:/var/lib/postgresql/data/`
+`microk8s kubectl cp ../../cheirrs_backup.sql postgres-0:/var/lib/postgresql/data/`
 
-`microk8s kubectl cp ../cheirrs_oseer_backup.sql postgres-0:/var/lib/postgresql/data/`
+`microk8s kubectl cp ../../cheirrs_oseer_backup.sql postgres-0:/var/lib/postgresql/data/`
 
-`microk8s kubectl cp ../a_horse_backup.sql postgres-0:/var/lib/postgresql/data/`
+`microk8s kubectl cp ../../a_horse_backup.sql postgres-0:/var/lib/postgresql/data/`
  
 `microk8s kubectl exec -it postgres-0 -- sh`
 
