@@ -144,7 +144,7 @@ Then:
 
  `docker pull redis:5.0.4`
 
- `docker pull postgres:10.14`
+ `docker pull postgres-10:14`
  
  `docker pull postgrest/postgrest:latest`
  
@@ -182,7 +182,7 @@ Then:
 
 `docker tag redis:5.0.4 10.184.36.93:32000/redis:5.0.4`
 
-`docker tag postgres:10.14 10.184.36.93:32000/postgres:10.14`
+`docker tag postgres-10:14 10.184.36.93:32000/postgres:10.14`
 
 `docker tag postgrest/postgrest:latest 10.184.36.93:32000/postgrest/postgrest:registry`
 
@@ -440,7 +440,7 @@ At this stage you should edit /var/lib/postgresql/data/pgdata/pg_hba.conf to all
 
 `microk8s kubectl describe pods`,
 
-and editing pg_hba.conf to include these addresses with /32 as the CIDR, and on trust basis.
+and editing pg_hba.conf to include these addresses with /24 as the CIDR, and on trust basis.
 
 _______________________________________________________________________
 
