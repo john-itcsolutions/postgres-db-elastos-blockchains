@@ -82,7 +82,7 @@ In first (within master-node):
 
 `su - $USER`
 
-`microk8s enable dashboard dns ingress istio metallb metrics-server registry storage`
+`microk8s enable dashboard dns ingress istio metrics-server registry storage`
 
 Repeat above 7 commands in each of database-node, blockchains-node, truffle-node.
 
@@ -442,6 +442,17 @@ At this stage you should edit /var/lib/postgresql/data/pgdata/pg_hba.conf to all
 
 and editing pg_hba.conf to include these addresses with /24 as the CIDR, and on trust basis.
 
+
+_______________________________________________________________________
+
+At this point we require a bare metal load balancer to expose the cluster to desktop DApps.
+Firstly, open gedit and prepare to collect IP Address details for each running pod by copying from:
+
+`microk8s kubectl describe pods`
+
+Next make a text note such as "microk8s enable metallb:10.1.234.0/24,10.12.97.0/24,etc" to cover each subnet address with CIDR 10.x.y.0/24.
+(Note you need to insert your own addresses here!)
+Then copy and paste the constructed note and wait for your load balancer to be enabled.
 _______________________________________________________________________
 
 ## TRUFFLE & Smart Contracts in Elastos/Ethereum: ##
